@@ -1,5 +1,5 @@
 /*
-* File: linked.h
+* File: variadic.c
 * Author: Quach Minh Thinh
 * Date: 30/03/2023
 * Description: This file contains all the functions for the Variadic.
