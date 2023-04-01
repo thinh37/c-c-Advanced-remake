@@ -1,5 +1,5 @@
 /*
-* File: linked.h
+* File: variadic.h
 * Author: Quach Minh Thinh
 * Date: 30/03/2023
 * Description: This is a header file for Variadic
