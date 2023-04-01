@@ -1,3 +1,9 @@
+/*
+* File: vector.c
+* Author: Quach Minh Thinh
+* Date: 31/03/2023
+* Description: This file contains all the functions for the Vector.
+*/
 #include"vector.h"
 /*
 * Function: createNode
