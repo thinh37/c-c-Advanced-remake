@@ -85,7 +85,7 @@ uint8_t deQueue( Queue *queue)
 }
 
 /*
-* Function: deQueue
+* Function: Display
 * Description: This function display the elements from the queue
 * Input:
 *   queue - a data structure type Queue
