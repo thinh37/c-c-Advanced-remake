@@ -4,13 +4,7 @@
 #include <string>
 #include<ctime>
 using namespace std;
-
-class Date{
-    private:
-        uint8_t day;
-        uint8_t mouth;
-        uint16_t year;
-        typedef enum{
+typedef enum{
             THANG_1=(uint8_t)1,
             THANG_2,
             THANG_3,
@@ -24,16 +18,22 @@ class Date{
             THANG_11,
             THANG_12
         }thang;
-        thang t;
+class Date{
+    private:
+        uint8_t day;
+        uint8_t mouth;
+        uint16_t year;
+        thang check;
     public:
         Date(uint8_t day=0,uint8_t mouth=0,uint16_t year=0);
+        void holiday();
         int Age();
 };
 Date::Date(uint8_t day,uint8_t mouth,uint16_t year){
     if(mouth > 12 ) exit(0);
     int temp=0;
-    this->t=(thang)mouth;
-    switch (t)
+    this->check=(thang)mouth;
+    switch (check)
     {
     case THANG_1:
     case THANG_3:
@@ -76,10 +76,25 @@ int Date::Age(){
     }
     return age;
 }
+void Date::holiday(){
+    if(this->day == 8 && this->mouth==3){
+        cout<<"Ngay quoc te phu nu";
+    }
+    else if(this->day == 1 && this->mouth==5){
+        cout<<"Ngay quoc te lao dong";
+    }
+    else if(this->day == 1 && this->mouth==6){
+        cout<<"Ngay quoc te thieu nhi";
+    }
+    else if(this->day == 30 && this->mouth==4){
+        cout<<"Ngay thong nhat dat nuoc";
+    }
+}
 int main(int argc, char const *argv[])
 {
     
     Date d(30,4,1990);
-    cout<<d.Age()<<" tuoi";
+    cout<<d.Age()<<" tuoi"<<endl;
+    d.holiday();
     return 0;
 }
