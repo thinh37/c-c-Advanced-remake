@@ -3,7 +3,9 @@
 #include <stdint.h>
 #include <string>
 #include <vector>
+#include <stdio.h>
 #include <conio.h>
+#include <iomanip>
 using namespace std;
 
 typedef enum{
@@ -137,8 +139,9 @@ void Manage::addStudent(){
     Sex sex;
     uint16_t age;
     float math,physical,chemistry;
+    fflush(stdin);
     cout<<"Name: ";
-    cin >> name;
+    getline(cin,name);
     cout<<"Age: ";
     cin >>age;
     int button;
@@ -160,9 +163,9 @@ void Manage::addStudent(){
 }
 
 void Manage::deleteStudent(){
+    if(this->sv.empty()) return;
     uint16_t ID;
     ID_AGAIN_DE:
-    cout<<sv.size()<<endl;
     cout<<"PRESS ID: ";
     cin >>ID;
         for(int i=0;i<sv.size();i++){
@@ -177,6 +180,7 @@ void Manage::deleteStudent(){
 }
 
 void Manage::updateInformStudent(){
+    if(this->sv.empty()) return;
     cout<<"UPDATE INFORM"<<endl;
     uint16_t ID;
     string update;
@@ -197,12 +201,14 @@ void Manage::updateInformStudent(){
     	}
         while(1){
         system("cls");
-        cout<<"PRESS 1: UPDATE NAME:"<<endl;
-        cout<<"PRESS 2: UPDATE AGE: "<<endl;
-        cout<<"PRESS 3: UPDATE SEX: "<<endl;
-        cout<<"PRESS 4: UPDATE MATH: "<<endl;
-        cout<<"PRESS 5: UPDATE PHYSICAL : "<<endl;
-        cout<<"PRESS 6: UPDATE CHEMISTRY  : "<<endl;
+         this->display();
+        cout<<"UPDATE INFORM"<<endl;
+        cout<<"PRESS 1: UPDATE NAME"<<endl;
+        cout<<"PRESS 2: UPDATE AGE "<<endl;
+        cout<<"PRESS 3: UPDATE SEX "<<endl;
+        cout<<"PRESS 4: UPDATE MATH "<<endl;
+        cout<<"PRESS 5: UPDATE PHYSICAL  "<<endl;
+        cout<<"PRESS 6: UPDATE CHEMISTRY   "<<endl;
         cout<<"PRESS 0: EXIT:" <<endl;
         int button;
         cout<<"PRESS: ";
@@ -213,7 +219,9 @@ void Manage::updateInformStudent(){
         case 1:
 
             cout<<"NEW NAME: ";
-            cin >> update;
+            fflush(stdin);
+            getline(cin,update);
+            fflush(stdin);
             this->sv.at(index).setName(update);
             break;
         case 2:
@@ -257,10 +265,10 @@ void Manage::updateInformStudent(){
         }
 }
 
-#define LAYBEL() cout<<"ID\tNAME\tAGE\tSEX\tMATH\tCHEMISTRY\tPHYSICAL\tAVERAGE\t\tRANK\n";
+#define LAYBEL() cout<<"ID\t"<<left<<setw(30)<<"NAME"<<"AGE\tSEX\tMATH\tCHEMISTRY\tPHYSICAL\tAVERAGE\t\tRANK\n";
 #define DISPLAY()     \
         cout<<sv.at(i).getId()<<"\t";                               \
-        cout<<sv.at(i).getName()<<"\t";                             \
+        cout<<left<<setw(30)<<sv.at(i).getName()<<"\t";                             \
         cout<<sv.at(i).getAge()<<"\t";                              \
         if(sv[i].getSex() == MALE)  cout<<"MALE"<<"\t";             \
         else cout<<"FEMALE"<<"\t";                                  \
@@ -280,11 +288,13 @@ void Manage::display(){
 }
 
 void Manage::searchbyName(){
+    if(this->sv.empty()) return;
     string tempName;
     cout<<"SEARCH STUDENT BY NAME \n";
     while(1){
     cout<<"PRESS NAME: ";
-    cin>> tempName;
+    fflush(stdin);
+    getline(cin,tempName);
     
     for(int i=0;i<sv.size();i++){
         if(tempName == sv.at(i).getName()){
@@ -328,6 +338,7 @@ void ManageStudent(){
 while(1){
     int button;
     system("cls");
+    student.display();
     cout<<"---MANAGE STUDENT---"<<endl;
     cout<<"PRESS 1: ADD STUDENT"<<endl;
     cout<<"PRESS 2: DELETE STUDENT"<<endl;
@@ -374,6 +385,4 @@ while(1){
 int main(){
     ManageStudent();
 }
-
-
 
