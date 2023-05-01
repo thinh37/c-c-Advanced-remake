@@ -712,6 +712,7 @@ void Personnel::deleteOrderService(int room){
         {
             case 1:
                 while(1){
+                	if(this->manage.getVecRoom()[room].getService().empty()) break;
                     int STT;
                     cout<<"PRESS STT: ";
                     cin>>STT;
