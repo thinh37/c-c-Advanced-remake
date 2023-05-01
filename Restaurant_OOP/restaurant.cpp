@@ -145,6 +145,9 @@ void Manage::addDish(){
 }
 
 void Manage::deleteDish(){
+    if(this->getVecDish().empty()) {
+        return;
+    }
     int ID;
     while(1){
     cout<<"PRESS ID: ";
@@ -174,6 +177,9 @@ void Manage::DisplayMenu(){
 }
 
 void Manage::updateDish(){
+    if(this->getVecDish().empty()) {
+        return;
+    }
     int index=-1;
     int ID;
     while(1){
@@ -314,6 +320,7 @@ void Personnel::addDish(int table){
     }
 }
 void Personnel::updateDish(int table){
+    if(this->manage.getVecTable()[table].getDish().empty()) return;
     while(1){
         system("cls");
         cout<<"-UPDATE DISH--"<<endl;
@@ -382,6 +389,7 @@ void Personnel::updateDish(int table){
     
 }
 void Personnel::deleteDish(int table){
+    if(this->manage.getVecTable()[table].getDish().empty()) return;
     while (1)
     {   
         system("cls");
@@ -602,7 +610,6 @@ int main(int argc, char const *argv[])
 {
 	programRestaurant();
 }
-
 
 
 
