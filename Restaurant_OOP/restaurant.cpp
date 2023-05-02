@@ -409,6 +409,7 @@ void Personnel::deleteDish(int table){
         {
             case 1:
             	while(1){
+            		if(this->manage.getVecTable()[table].getDish().empty()) break;
                     int STT;
                     cout<<"PRESS STT:";
                     cin >> STT;
@@ -610,6 +611,5 @@ int main(int argc, char const *argv[])
 {
 	programRestaurant();
 }
-
 
 
